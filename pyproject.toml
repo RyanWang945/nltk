@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "greetings"
+version = "0.1.0"
+description = "A minimal greetings package with Greeter class"
+readme = "README.md"
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+web = [
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.20.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
