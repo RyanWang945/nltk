@@ -28,6 +28,6 @@ print(greeter.greet(user_type="vip"))  # Dear VIP user, welcome back!
 pytest -q
 ```
 
-## 项目规划
+## Project Plan
 
-本项目计划作为 [Jarvis](https://github.com/jarvis) 的测试项目使用。
+This project is planned for use as a test project for [Jarvis](https://github.com/jarvis).
