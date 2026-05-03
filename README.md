@@ -1,12 +1,29 @@
-jarvis测试
+# Greetings
 
-## Jarvis 测试说明
+A minimal Python greetings package with a `Greeter` class supporting Chinese and English.
 
-这是一个 Jarvis 测试的 README 更新，用于演示自动化的文档修改和提交流程。
+## Quick Start
 
-### 测试内容
-- 自动化文档修改
-- Git 提交与推送流程
-- 验证 CI/CD 集成
+```python
+from greetings import Greeter
 
-本次修改由 Jarvis 自动化工具完成。
+greeter = Greeter()
+print(greeter.greet())
+print(greeter.greet_by_time())
+```
+
+## User Types
+
+```python
+from greetings import Greeter
+
+greeter = Greeter()
+print(greeter.greet(user_type="new"))  # Welcome, new user! We are glad to serve you.
+print(greeter.greet(user_type="vip"))  # Dear VIP user, welcome back!
+```
+
+## Run Tests
+
+```bash
+pytest -q
+```
