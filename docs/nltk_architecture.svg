@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="760" viewBox="0 0 1120 760" role="img" aria-labelledby="title desc">
+  <title id="title">NLTK Repository Architecture</title>
+  <desc id="desc">Architecture diagram for this repository, showing FastAPI entry points, the greetings package, tests, and project configuration files.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 10; }
+      .module { fill: #eff6ff; stroke: #2563eb; stroke-width: 1.4; rx: 8; }
+      .package { fill: #ecfdf5; stroke: #059669; stroke-width: 1.4; rx: 8; }
+      .test { fill: #fff7ed; stroke: #ea580c; stroke-width: 1.4; rx: 8; }
+      .config { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 1.4; rx: 8; }
+      .external { fill: #f1f5f9; stroke: #64748b; stroke-width: 1.4; rx: 8; }
+      .title { font: 700 28px Arial, Helvetica, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 14px Arial, Helvetica, sans-serif; fill: #475569; }
+      .section { font: 700 16px Arial, Helvetica, sans-serif; fill: #1e293b; }
+      .label { font: 700 14px Arial, Helvetica, sans-serif; fill: #0f172a; }
+      .small { font: 400 12px Arial, Helvetica, sans-serif; fill: #334155; }
+      .mono { font: 400 12px Consolas, "Courier New", monospace; fill: #334155; }
+      .arrow { stroke: #334155; stroke-width: 1.7; fill: none; marker-end: url(#arrow); }
+      .soft-arrow { stroke: #64748b; stroke-width: 1.4; stroke-dasharray: 5 5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1120" height="760"/>
+
+  <text class="title" x="48" y="48">Repository Architecture</text>
+  <text class="subtitle" x="48" y="74">A compact Python greetings project with a FastAPI HTTP layer, reusable core package, tests, and runtime configuration.</text>
+
+  <rect class="panel" x="40" y="108" width="1040" height="594"/>
+  <text class="section" x="64" y="138">Project Root</text>
+  <text class="mono" x="64" y="160">pyproject.toml, requirements.txt, Dockerfile, README.md, FEATURE.md</text>
+
+  <rect class="external" x="96" y="214" width="160" height="72"/>
+  <text class="label" x="126" y="242">HTTP Clients</text>
+  <text class="small" x="119" y="264">call API endpoints</text>
+
+  <rect class="module" x="336" y="188" width="260" height="126"/>
+  <text class="label" x="360" y="218">api/main.py</text>
+  <text class="small" x="360" y="242">FastAPI app: "Greetings API"</text>
+  <text class="small" x="360" y="264">Includes APIRouter</text>
+  <text class="mono" x="360" y="288">uvicorn api.main:app</text>
+
+  <rect class="module" x="668" y="188" width="292" height="126"/>
+  <text class="label" x="692" y="218">api/routes.py</text>
+  <text class="small" x="692" y="242">Routes request handlers</text>
+  <text class="mono" x="692" y="264">GET /health</text>
+  <text class="mono" x="692" y="284">GET /greet, /greet-by-time</text>
+
+  <rect class="module" x="336" y="364" width="260" height="100"/>
+  <text class="label" x="360" y="394">api_server.py</text>
+  <text class="small" x="360" y="418">Standalone health-only FastAPI app</text>
+  <text class="mono" x="360" y="442">uvicorn api_server:app</text>
+
+  <rect class="package" x="668" y="388" width="292" height="158"/>
+  <text class="label" x="692" y="418">greetings package</text>
+  <text class="mono" x="692" y="442">greetings/__init__.py</text>
+  <text class="small" x="692" y="464">Exports Greeter public API</text>
+  <text class="mono" x="692" y="492">greetings/greeter.py</text>
+  <text class="small" x="692" y="514">Greeter.greet()</text>
+  <text class="small" x="692" y="534">Greeter.greet_by_time()</text>
+
+  <rect class="test" x="96" y="536" width="260" height="118"/>
+  <text class="label" x="120" y="566">tests/</text>
+  <text class="mono" x="120" y="590">tests/test_greetings.py</text>
+  <text class="small" x="120" y="612">Pytest coverage for languages,</text>
+  <text class="small" x="120" y="632">user types, templates, and time</text>
+
+  <rect class="config" x="420" y="536" width="224" height="118"/>
+  <text class="label" x="444" y="566">Packaging and Config</text>
+  <text class="mono" x="444" y="590">pyproject.toml</text>
+  <text class="small" x="444" y="612">Package metadata, pytest paths,</text>
+  <text class="small" x="444" y="632">optional FastAPI dependencies</text>
+
+  <rect class="config" x="716" y="596" width="244" height="58"/>
+  <text class="label" x="740" y="622">Runtime Files</text>
+  <text class="mono" x="740" y="644">requirements.txt, Dockerfile</text>
+
+  <path class="arrow" d="M 256 250 L 326 250"/>
+  <text class="small" x="276" y="238">requests</text>
+
+  <path class="arrow" d="M 596 250 L 658 250"/>
+  <text class="small" x="614" y="238">include_router</text>
+
+  <path class="arrow" d="M 814 314 L 814 378"/>
+  <text class="small" x="828" y="350">imports Greeter</text>
+
+  <path class="soft-arrow" d="M 356 595 L 658 489"/>
+  <text class="small" x="462" y="522">tests public package API</text>
+
+  <path class="soft-arrow" d="M 532 536 L 532 474"/>
+  <text class="small" x="548" y="505">pytest config</text>
+
+  <path class="soft-arrow" d="M 644 596 L 706 625"/>
+  <text class="small" x="646" y="638">runtime deps</text>
+
+  <path class="soft-arrow" d="M 596 414 L 658 447"/>
+  <text class="small" x="609" y="454">separate app</text>
+
+  <rect x="64" y="674" width="992" height="1" fill="#e2e8f0"/>
+  <text class="small" x="64" y="690">Relationship key: solid arrows show runtime request/import flow; dashed arrows show test, configuration, or supporting-runtime relationships.</text>
+</svg>
